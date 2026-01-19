@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "Sigurna naplata"
     ],
     url: "https://electon-app.vercel.app/",
-    coverImage: "/portfolio/primjer-2/electon.png"
+    coverImage: "/portfolio/primjer-2/electon.PNG"
   },
   {
     slug: "primjer-projekta-3",

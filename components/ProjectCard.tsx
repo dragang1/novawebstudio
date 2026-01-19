@@ -77,16 +77,21 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           </div>
 
           {/* Hover overlay with CTA */}
-          {isHovered && project.url && (
-            <div className={`absolute inset-0 bg-gradient-to-t ${config.gradient} opacity-70 flex items-center justify-center`}>
-              <Link href={project.url} target="_blank" rel="noopener noreferrer">
-                <div className="flex items-center gap-2 bg-white text-surface-primary px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:scale-105 transition-transform duration-200">
-                  Pogledaj sajt
-                  <ExternalLink className="w-4 h-4" />
-                </div>
-              </Link>
-            </div>
-          )}
+         {project.url && (
+  <div
+    className={`absolute inset-0 bg-gradient-to-t ${config.gradient}
+      opacity-0 md:group-hover:opacity-70 md:flex
+      flex items-center justify-center transition-opacity duration-200`}
+  >
+    <Link href={project.url} target="_blank" rel="noopener noreferrer">
+      <div className="flex items-center gap-2 bg-white text-surface-primary px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:scale-105 transition-transform duration-200">
+        Pogledaj sajt
+        <ExternalLink className="w-4 h-4" />
+      </div>
+    </Link>
+  </div>
+)}
+
         </div>
 
         {/* Content */}
