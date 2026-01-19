@@ -27,7 +27,7 @@ export default function UslugePage() {
             </span>
             <h1 className="font-heading text-display mb-6">
               <span className="text-dark-50">Šta </span>
-              <span className="gradient-text-warm">radimo za vas</span>
+              <span className="gradient-text-warm">radimo za vas?</span>
             </h1>
             <p className="text-xl text-dark-400 leading-relaxed">
               Sveobuhvatne usluge za vaš online biznis - od ideje do objavljenog sajta i kontinuirane podrške

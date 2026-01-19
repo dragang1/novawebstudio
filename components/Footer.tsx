@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, ArrowUpRight, Heart } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Heart, Instagram } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -22,9 +22,11 @@ export default function Footer() {
   ];
 
   const contactInfo = [
-    { icon: Mail, text: "info@novawebstudio.co", color: "text-accent-500" },
-    { icon: Phone, text: "+387 66 745 772", color: "text-emerald-500" },
-    { icon: MapPin, text: "Bosna i Hercegovina", color: "text-blue-500" },
+    { icon: Mail, text: "info@novawebstudio.co", color: "text-accent-500",href: "mailto:info@novawebstudio.co",},
+    { icon: Phone, text: "+387 66 745 772", color: "text-emerald-500",href: "tel:+38766745772", },
+    { icon: Instagram, text: "@novawebstudio.co",
+    color: "text-blue-500",
+    href: "https://instagram.com/novawebstudio.co",},
   ];
 
   return (
@@ -126,10 +128,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {contactInfo.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-dark-500 text-sm">
+                <Link href={item.href}
+      target={item.href.startsWith("http") ? "_blank" : undefined}
+      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} key={idx} className="flex items-center gap-3 text-dark-500 text-sm">
                   <item.icon className={`w-4 h-4 ${item.color}`} />
                   <span>{item.text}</span>
-                </li>
+                </Link>
               ))}
             </ul>
           </motion.div>
