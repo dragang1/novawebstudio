@@ -57,7 +57,7 @@ export const projects: Project[] = [
       "Bolje korisničko iskustvo",
       "Više konverzija"
     ],
-    url: "https://example.com",
-    coverImage: "/portfolio/primjer-3/cover.webp"
+    url: "https://novawebstudio.co",
+    coverImage: "/portfolio/primjer-3/nova.png"
   }
 ];
