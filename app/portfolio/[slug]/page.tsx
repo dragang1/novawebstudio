@@ -4,13 +4,14 @@ import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, use } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check, ArrowRight } from "lucide-react";
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default function ProjectPage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const [imageError, setImageError] = useState(false);
-  const project = projects.find((p) => p.slug === params.slug);
+  const resolvedParams = params instanceof Promise ? use(params) : params;
+  const project = projects.find((p) => p.slug === resolvedParams.slug);
 
   if (!project) {
     notFound();

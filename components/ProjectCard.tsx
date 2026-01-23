@@ -1,7 +1,6 @@
 "use client";
 
 import { Project } from "@/data/projects";
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -82,19 +81,24 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             </span>
           </div>
 
-          {/* Hover overlay with CTA */}
+          {/* Hover overlay with CTA - Desktop only */}
          {project.url && (
   <div
     className={`absolute inset-0 bg-gradient-to-t ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient}
-      opacity-0 md:group-hover:opacity-70 md:flex
-      flex items-center justify-center transition-opacity duration-200`}
+      opacity-0 md:group-hover:opacity-70 hidden md:flex
+      items-center justify-center transition-opacity duration-200 pointer-events-none`}
   >
-    <Link href={project.url} target="_blank" rel="noopener noreferrer">
+    <a 
+      href={project.url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="pointer-events-auto"
+    >
       <div className="flex items-center gap-2 bg-white text-surface-primary px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:scale-105 transition-transform duration-200">
         Pogledaj sajt
         <ExternalLink className="w-4 h-4" />
       </div>
-    </Link>
+    </a>
   </div>
 )}
 
@@ -136,6 +140,25 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {/* Mobile CTA button */}
+          {project.url && (
+            <div className="mt-4 pt-4 border-t border-white/5 md:hidden">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 border px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
+                  project.slug === 'primjer-projekta-2' 
+                    ? 'bg-purple-500/10 text-purple-500 border-purple-500/20' 
+                    : `${config.bgColor} ${config.textColor} border-white/10`
+                }`}
+              >
+                Otvori sajt
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           )}
         </div>
