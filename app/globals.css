@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@source "../app/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../pages/**/*.{js,ts,jsx,tsx,mdx}";
+
 :root {
   /* Dark Luxury Color Palette */
   --bg-primary: #0A0A0B;

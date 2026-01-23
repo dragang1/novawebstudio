@@ -58,7 +58,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               </div>
             </Link>
             
-            <span className={`inline-block ${config.color} text-sm font-medium tracking-wider uppercase mb-4`}>
+            <span className={`inline-block ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.color} text-sm font-medium tracking-wider uppercase mb-4`}>
               {project.client} • {project.year}
             </span>
             
@@ -83,21 +83,29 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           >
             <div className="relative h-96 md:h-[500px] bg-surface-tertiary flex items-center justify-center">
               {!imageError ? (
-                <Image
-                  src={project.coverImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                  onError={() => setImageError(true)}
-                />
+                <>
+                  <Image
+                    src={project.coverImage}
+                    alt={project.title}
+                    fill
+                    className={`object-cover ${project.slug === 'primjer-projekta-2' || project.slug === 'primjer-projekta-3' ? 'brightness-75' : ''}`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                    onError={() => setImageError(true)}
+                  />
+                  {project.slug === 'primjer-projekta-2' && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-indigo-900/30 to-transparent" />
+                  )}
+                  {project.slug === 'primjer-projekta-3' && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-blue-900/30 to-transparent" />
+                  )}
+                </>
               ) : (
                 <div className={`text-9xl font-heading font-bold bg-gradient-to-br ${config.gradient} bg-clip-text text-transparent opacity-30`}>
                   {project.title.charAt(0)}
                 </div>
               )}
               {/* Gradient accent at bottom */}
-              <div className={`absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r ${config.gradient}`} />
+              <div className={`absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient}`} />
             </div>
           </motion.div>
 
@@ -111,7 +119,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
           >
             <h2 className="font-heading text-title mb-6">
               <span className="text-dark-50">O </span>
-              <span className={`bg-gradient-to-r ${config.gradient} bg-clip-text text-transparent`}>projektu</span>
+              <span className={`bg-gradient-to-r ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient} bg-clip-text text-transparent`}>projektu</span>
             </h2>
             <p className="text-dark-400 text-lg leading-relaxed mb-10">{project.summary}</p>
 
@@ -137,7 +145,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                 <ul className="space-y-3">
                   {project.results.map((result, index) => (
                     <li key={index} className="flex items-start gap-3 text-dark-400">
-                      <Check className={`w-5 h-5 ${config.checkColor} mt-0.5 flex-shrink-0`} />
+                      <Check className={`w-5 h-5 ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.checkColor} mt-0.5 flex-shrink-0`} />
                       <span>{result}</span>
                     </li>
                   ))}
@@ -152,7 +160,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`inline-flex items-center gap-3 bg-gradient-to-r ${config.gradient} text-surface-primary px-8 py-4 rounded-full font-semibold transition-shadow duration-300 hover:shadow-glow-multi cursor-pointer`}
+                    className={`inline-flex items-center gap-3 bg-gradient-to-r ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient} text-surface-primary px-8 py-4 rounded-full font-semibold transition-shadow duration-300 hover:shadow-glow-multi cursor-pointer`}
                   >
                     Pogledaj sajt
                     <ExternalLink className="w-5 h-5" />
