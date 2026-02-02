@@ -14,23 +14,39 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "primjer-projekta-1",
-    title: "Web sajt za lokalni servis",
+    title: "E-commerce sajt za online prodaju",
     client: "Primjer Klijenta",
     year: 2025,
     category: "website",
-    services: ["Dizajn", "Izrada", "SEO osnove"],
-    summary: "Brz i moderan web sajt sa jasnim pozivom na akciju i kontakt formom. Optimizovan za mobilne uređaje i pretraživače.",
+    services: ["Web shop", "Naplata", "Integracije"],
+    summary: "Potpuno funkcionalan web shop sa katalogom proizvoda, korpom za kupovinu i sistemom za preuzimanje narudžbi.",
     results: [
-      "Brže učitavanje stranice",
-      "Više upita preko kontakt forme",
-      "Poboljšan SEO ranking"
+    "Povećana online prodaja",
+      "Lako upravljanje proizvodima",
+      "Sigurna naplata"
     ],
     url: "https://ledtehnika.com",
     coverImage: "/portfolio/primjer-1/logowhite.png"
   },
-  
   {
     slug: "primjer-projekta-2",
+    title: "Beauty salon web sajt",
+    client: "Primjer Klijenta 2",
+    year: 2026,
+    category: "website",
+    services: ["Web dizajn", "Kontakt forma", "Vidljivost na pretraživačima"],
+    summary: "Potpuno funkcionalan web sajt za beauty salon sa kontakt formom i optimizacijom za pretraživače.",
+    results: [
+      "Povećana vidljivost na internetu",
+      "Više zakazanih termina",
+      "Profesionalan online nastup"
+    ],
+    url: "https://majabeautyroom.com",
+    coverImage: "/portfolio/primjer-2/logo.png"
+  },
+  
+  {
+    slug: "primjer-projekta-3",
     title: "Redizajn postojećeg sajta",
     client: "Primjer Klijenta 3",
     year: 2024,
@@ -45,20 +61,5 @@ export const projects: Project[] = [
     url: "https://kalemprom.vercel.app/",
     coverImage: "/portfolio/primjer-3/logo-kalemprom.png"
   },
-  {
-    slug: "primjer-projekta-3",
-    title: "E-commerce sajt za online prodaju",
-    client: "Primjer Klijenta 2",
-    year: 2024,
-    category: "ecommerce",
-    services: ["Web shop", "Naplata", "Integracije"],
-    summary: "Potpuno funkcionalan web shop sa katalogom proizvoda, korpom za kupovinu i integracijom sistema za plaćanje.",
-    results: [
-      "Povećana online prodaja",
-      "Lako upravljanje proizvodima",
-      "Sigurna naplata"
-    ],
-    url: "https://electon-app.vercel.app/",
-    coverImage: "/portfolio/primjer-2/electon.PNG"
-  },
+  
 ];
