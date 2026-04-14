@@ -66,39 +66,70 @@ export default function Process() {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.15, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -10, scale: 1.02 }}
               className="group relative"
             >
-              {/* Connector line */}
+              {/* Connector line with animation */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[calc(50%+4rem)] right-0 h-px">
+                <motion.div
+                  className="hidden md:block absolute top-12 left-[calc(50%+4rem)] right-0 h-px"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 + index * 0.2 }}
+                  style={{ originX: 0 }}
+                >
                   <div className={`h-full bg-gradient-to-r ${step.gradient} opacity-30`} />
-                </div>
+                </motion.div>
               )}
 
               {/* Card */}
-              <div className="relative bg-surface-card rounded-2xl p-8 border border-white/5 group-hover:border-white/10 transition-colors duration-300">
+              <motion.div
+                className="relative bg-surface-card rounded-2xl p-8 border border-white/5 group-hover:border-white/10 transition-all duration-300 shadow-card hover:shadow-glow-cool/20"
+                whileHover={{ borderColor: `rgba(${step.gradient.includes('accent') ? '168, 85, 247' : step.gradient.includes('emerald') ? '16, 185, 129' : '59, 130, 246'}, 0.3)` }}
+              >
                 {/* Step number */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className={`w-14 h-14 rounded-xl ${step.bgColor} border border-white/5 flex items-center justify-center transition-colors duration-300`}>
+                  <motion.div
+                    className={`w-14 h-14 rounded-xl ${step.bgColor} border border-white/5 flex items-center justify-center transition-colors duration-300`}
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     <step.icon className={`w-6 h-6 ${step.textColor}`} />
-                  </div>
-                  <span className={`text-5xl font-heading font-bold bg-gradient-to-br ${step.gradient} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity duration-300`}>
+                  </motion.div>
+                  <motion.span
+                    className={`text-5xl font-heading font-bold bg-gradient-to-br ${step.gradient} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity duration-300`}
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
                     {step.number}
-                  </span>
+                  </motion.span>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-heading font-semibold text-dark-50 mb-3">
+                <motion.h3
+                  className="text-xl font-heading font-semibold text-dark-50 mb-3"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
                   {step.title}
-                </h3>
-                <p className="text-dark-400 leading-relaxed text-sm">
+                </motion.h3>
+                <motion.p
+                  className="text-dark-400 leading-relaxed text-sm"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                >
                   {step.description}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             </motion.div>
           ))}
         </div>

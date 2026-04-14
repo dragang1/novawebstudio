@@ -89,41 +89,101 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
       {/* Content */}
       <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-lg font-heading font-semibold text-dark-50 mb-2">
+        <motion.h3
+          className="text-lg font-heading font-semibold text-dark-50 mb-2"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 + (index || 0) * 0.1 }}
+        >
           {project.title}
-        </h3>
+        </motion.h3>
         
-        <p className="text-dark-400 mb-5 text-sm leading-relaxed flex-1">
+        <motion.p
+          className="text-dark-400 mb-5 text-sm leading-relaxed flex-1"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 + (index || 0) * 0.1 }}
+        >
           {project.summary}
-        </p>
+        </motion.p>
         
-        {/* Services tags */}
-        <div className="flex flex-wrap gap-2 mb-5">
+        {/* Services tags with stagger */}
+        <motion.div
+          className="flex flex-wrap gap-2 mb-5"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.4 + (index || 0) * 0.1,
+              },
+            },
+          }}
+        >
           {project.services.slice(0, 3).map((service, idx) => (
-            <span
+            <motion.span
               key={idx}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                show: { opacity: 1, scale: 1 },
+              }}
+              whileHover={{ scale: 1.05 }}
               className="px-2.5 py-1 rounded-full bg-surface-tertiary border border-white/5 text-dark-400 text-xs"
             >
               {service}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Results */}
+        {/* Results with stagger */}
         {project.results && project.results.length > 0 && (
-          <div className="pt-4 border-t border-white/5">
-            <ul className="space-y-2">
+          <motion.div
+            className="pt-4 border-t border-white/5"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 + (index || 0) * 0.1 }}
+          >
+            <motion.ul
+              className="space-y-2"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.6 + (index || 0) * 0.1,
+                  },
+                },
+              }}
+            >
               {project.results.slice(0, 2).map((result, idx) => (
-                <li
+                <motion.li
                   key={idx}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
                   className="flex items-start gap-2 text-xs text-dark-400"
                 >
-                  <Check className={`w-3.5 h-3.5 ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.textColor} mt-0.5 flex-shrink-0`} />
+                  <motion.div
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <Check className={`w-3.5 h-3.5 ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.textColor} mt-0.5 flex-shrink-0`} />
+                  </motion.div>
                   <span>{result}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         )}
 
         {/* Mobile CTA button - only shown on mobile */}
@@ -153,10 +213,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: (index || 0) * 0.1 }}
+      transition={{ duration: 0.6, delay: (index || 0) * 0.15, type: "spring", stiffness: 100 }}
+      whileHover={{ y: -10, scale: 1.02 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="group h-full"

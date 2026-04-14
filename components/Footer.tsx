@@ -74,20 +74,40 @@ export default function Footer() {
             <h4 className="text-dark-50 font-semibold mb-6 text-sm uppercase tracking-wider">
               Navigacija
             </h4>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.2,
+                  },
+                },
+              }}
+            >
               {navLinks.map((link, index) => (
-                <li key={link.href}>
+                <motion.li
+                  key={link.href}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
+                >
                   <Link href={link.href}>
                     <motion.div
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 5, scale: 1.02 }}
                       className="text-dark-500 hover:text-accent-500 transition-colors duration-300 text-sm cursor-pointer"
                     >
                       {link.label}
                     </motion.div>
                   </Link>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
 
           {/* Services */}
@@ -100,20 +120,40 @@ export default function Footer() {
             <h4 className="text-dark-50 font-semibold mb-6 text-sm uppercase tracking-wider">
               Usluge
             </h4>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.3,
+                  },
+                },
+              }}
+            >
               {serviceLinks.map((link, index) => (
-                <li key={link.href}>
+                <motion.li
+                  key={link.href}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
+                >
                   <Link href={link.href}>
                     <motion.div
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 5, scale: 1.02 }}
                       className="text-dark-500 hover:text-emerald-500 transition-colors duration-300 text-sm cursor-pointer"
                     >
                       {link.label}
                     </motion.div>
                   </Link>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
 
           {/* Contact with colored icons */}
@@ -126,16 +166,46 @@ export default function Footer() {
             <h4 className="text-dark-50 font-semibold mb-6 text-sm uppercase tracking-wider">
               Kontakt
             </h4>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.4,
+                  },
+                },
+              }}
+            >
               {contactInfo.map((item, idx) => (
-                <Link href={item.href}
-      target={item.href.startsWith("http") ? "_blank" : undefined}
-      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} key={idx} className="flex items-center gap-3 text-dark-500 text-sm">
-                  <item.icon className={`w-4 h-4 ${item.color}`} />
-                  <span>{item.text}</span>
-                </Link>
+                <motion.li
+                  key={idx}
+                  variants={{
+                    hidden: { opacity: 0, x: -20 },
+                    show: { opacity: 1, x: 0 },
+                  }}
+                >
+                  <Link
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-3 text-dark-500 text-sm"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      transition={{ type: "spring", stiffness: 400 }}
+                    >
+                      <item.icon className={`w-4 h-4 ${item.color}`} />
+                    </motion.div>
+                    <span>{item.text}</span>
+                  </Link>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
         </div>
 

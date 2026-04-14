@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
 import ProjectCard from "@/components/ProjectCard";
 import Process from "@/components/Process";
+import Testimonials from "@/components/Testimonials";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 import Link from "next/link";
@@ -105,6 +106,9 @@ export default function Home() {
           </motion.div>
         </div>
       </AnimatedSection>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* CTA sekcija */}
       <AnimatedSection className="py-32 relative overflow-hidden">

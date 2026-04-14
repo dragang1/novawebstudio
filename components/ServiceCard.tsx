@@ -70,55 +70,106 @@ export default function ServiceCard({ service, index }: { service: Service; inde
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: (index || 0) * 0.1 }}
+      transition={{ duration: 0.6, delay: (index || 0) * 0.15, type: "spring", stiffness: 100 }}
+      whileHover={{ y: -8, scale: 1.02 }}
       className="group h-full"
     >
-      <div className={`relative h-full bg-surface-card rounded-2xl p-8 border border-white/5 ${colors.border} transition-colors duration-300 overflow-hidden`}>
+      <motion.div
+        className={`relative h-full bg-surface-card rounded-2xl p-8 border border-white/5 ${colors.border} transition-all duration-300 overflow-hidden shadow-card hover:shadow-glow-${service.color === 'emerald' ? 'emerald' : service.color === 'coral' ? 'multi' : 'blue'}/20`}
+        whileHover={{ borderColor: `rgba(${service.color === 'emerald' ? '16, 185, 129' : service.color === 'coral' ? '168, 85, 247' : '59, 130, 246'}, 0.3)` }}
+      >
         {/* Content */}
         <div className="relative z-10">
-          {/* Icon with color */}
-          <div className={`w-14 h-14 rounded-xl ${colors.bg} border border-white/5 flex items-center justify-center mb-6 transition-colors duration-300`}>
+          {/* Icon with color and animation */}
+          <motion.div
+            className={`w-14 h-14 rounded-xl ${colors.bg} border border-white/5 flex items-center justify-center mb-6 transition-colors duration-300`}
+            whileHover={{ rotate: 10, scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <IconComponent className={`w-6 h-6 ${colors.text}`} />
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h3 className="text-xl font-heading font-semibold text-dark-50 mb-3">
+          <motion.h3
+            className="text-xl font-heading font-semibold text-dark-50 mb-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 + (index || 0) * 0.1 }}
+          >
             {service.title}
-          </h3>
+          </motion.h3>
 
           {/* Description */}
-          <p className="text-dark-400 mb-6 leading-relaxed text-sm">
+          <motion.p
+            className="text-dark-400 mb-6 leading-relaxed text-sm"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 + (index || 0) * 0.1 }}
+          >
             {service.description}
-          </p>
+          </motion.p>
 
-          {/* Features with colored checks */}
-          <ul className="space-y-3 mb-8">
+          {/* Features with colored checks and stagger */}
+          <motion.ul
+            className="space-y-3 mb-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.1,
+                  delayChildren: 0.4 + (index || 0) * 0.1,
+                },
+              },
+            }}
+          >
             {service.features.map((feature, idx) => (
-              <li
+              <motion.li
                 key={idx}
+                variants={{
+                  hidden: { opacity: 0, x: -20 },
+                  show: { opacity: 1, x: 0 },
+                }}
                 className="flex items-start gap-3 text-sm text-dark-400"
               >
-                <Check className={`w-4 h-4 ${colors.check} mt-0.5 flex-shrink-0`} />
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <Check className={`w-4 h-4 ${colors.check} mt-0.5 flex-shrink-0`} />
+                </motion.div>
                 <span>{feature}</span>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
 
           {/* CTA */}
           <Link href="/kontakt">
-            <div className={`inline-flex items-center gap-2 text-dark-300 hover:${colors.text} transition-colors duration-300 text-sm font-medium cursor-pointer`}>
+            <motion.div
+              className={`inline-flex items-center gap-2 text-dark-300 hover:${colors.text} transition-colors duration-300 text-sm font-medium cursor-pointer`}
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
               <span>Zatraži ponudu</span>
               <ArrowRight className="w-4 h-4" />
-            </div>
+            </motion.div>
           </Link>
         </div>
 
-        {/* Corner accent - static, no animation */}
-        <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${colors.gradient} rounded-bl-full opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-      </div>
+        {/* Corner accent with animation */}
+        <motion.div
+          className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${colors.gradient} rounded-bl-full opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+          animate={{ rotate: [0, 90, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+      </motion.div>
     </motion.div>
   );
 }
