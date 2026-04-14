@@ -12,7 +12,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Stefan Grlica",
+    name: "Stefan",
     company: "LED Tehnika",
     role: "Direktor",
     content:
@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "2",
-    name: "Maja Rašković",
+    name: "Maja",
     company: "Maja Beauty Room",
     role: "Vlasnica",
     content:
@@ -32,7 +32,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "3",
-    name: "Sara Hadžić",
+    name: "Sara",
     company: "Caffe Central",
     role: "Menadžer",
     content:
@@ -42,7 +42,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "4",
-    name: "Dragan Savić",
+    name: "Goran",
     company: "Auto Servis Plus",
     role: "Vlasnik",
     content:

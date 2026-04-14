@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, BadgeCheck, Sparkles, Zap, Shield } from "lucide-react";
 
 export default function Hero() {
@@ -37,7 +37,7 @@ export default function Hero() {
   ];
 
   // Animation variants for staggered stats
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -48,7 +48,7 @@ export default function Hero() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.8 },
     show: {
       opacity: 1,
@@ -63,13 +63,13 @@ export default function Hero() {
   };
 
   // Floating animation for decorative elements
-  const floatingVariants = {
+  const floatingVariants: Variants = {
     animate: {
       y: [0, -10, 0],
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
