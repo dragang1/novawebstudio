@@ -3,6 +3,18 @@ import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { BreadcrumbsSchema } from "@/components/BreadcrumbsSchema";
+import {
+  baseUrl,
+  companyName,
+  companyEmail,
+  companyPhone,
+  companyDescription,
+  companyAddress,
+  companyServiceTypes,
+  socialProfiles,
+} from "@/lib/site";
+import { generateBreadcrumbSchema, homeBreadcrumbs } from "@/lib/schema";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -16,15 +28,13 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://novawebstudio.co';
-
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: "Nova Web Studio | Izrada Premium Web Sajtova",
     template: "%s | Nova Web Studio",
   },
-  description: "Izrada modernih web sajtova koji donose klijente. Specijalizovani za lokalne biznise i e-commerce. Besplatna konsultacija!",
+  description: companyDescription,
   keywords: [
     "izrada web sajtova",
     "web dizajn",
@@ -33,14 +43,23 @@ export const metadata: Metadata = {
     "redizajn sajta",
     "SEO optimizacija",
     "Bosna i Hercegovina",
-    "Website banjaluka",
     "web development",
     "responsive dizajn",
     "online prodaja",
+    "lokalni biznis",
+    "digitalni marketing",
+    "website Banjaluka",
+    "web dizajn BiH",
+    "e-commerce Sarajevo",
+    "web shop Mostar",
+    "izrada sajta Tuzla",
+    "web agencija Banjaluka",
+    "web agency Bosnia",
+    "izrada web stranica",
   ],
-  authors: [{ name: "Nova Web Studio" }],
-  creator: "Nova Web Studio",
-  publisher: "Nova Web Studio",
+  authors: [{ name: companyName }],
+  creator: companyName,
+  publisher: companyName,
   formatDetection: {
     email: false,
     address: false,
@@ -50,12 +69,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "sr_BA",
     url: baseUrl,
-    siteName: "Nova Web Studio",
+    siteName: companyName,
     title: "Nova Web Studio | Izrada Premium Web Sajtova",
-    description: "Izrada modernih web sajtova koji donose klijente. Specijalizovani za lokalne biznise i e-commerce.",
+    description: companyDescription,
     images: [
       {
-        url: "/og-image.jpg",
+        url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "Nova Web Studio - Izrada Premium Web Sajtova",
@@ -65,8 +84,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nova Web Studio | Izrada Premium Web Sajtova",
-    description: "Izrada modernih web sajtova koji donose klijente. Specijalizovani za lokalne biznise i e-commerce.",
-    images: ["/og-image.jpg"],
+    description: companyDescription,
+    images: [`${baseUrl}/og-image.jpg`],
     creator: "@novawebstudio",
   },
   robots: {
@@ -80,58 +99,57 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // Dodaj svoje verification kodove kada ih dobiješ
-    // google: "google-site-verification-code",
-    // yandex: "yandex-verification-code",
-  },
+  verification: {},
   alternates: {
     canonical: baseUrl,
   },
 };
 
+// JSON-LD za breadcrumbs
+const breadcrumbSchema = generateBreadcrumbSchema(homeBreadcrumbs);
+
 // JSON-LD strukturirani podaci za organizaciju
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Nova Web Studio",
+  name: companyName,
   url: baseUrl,
   logo: `${baseUrl}/logo.png`,
-  description: "Izrada modernih web sajtova koji donose klijente. Specijalizovani za lokalne biznise i e-commerce.",
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "BA",
-    addressRegion: "Bosna i Hercegovina",
-  },
+  description: companyDescription,
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "info@novawebstudio.co",
+    telephone: companyPhone,
+    email: companyEmail,
     availableLanguage: ["Bosnian", "Croatian", "Serbian"],
   },
-  sameAs: [
-    // Dodaj svoje socijalne mreže ovdje
-    // "https://www.facebook.com/novawebstudio",
-    // "https://www.instagram.com/novawebstudio",
-    // "https://www.linkedin.com/company/novawebstudio",
-  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: companyAddress.streetAddress,
+    addressCountry: companyAddress.addressCountry,
+    addressRegion: companyAddress.addressRegion,
+  },
+  sameAs: socialProfiles,
 };
 
 // JSON-LD za LocalBusiness
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Nova Web Studio",
+  name: companyName,
   url: baseUrl,
-  description: "Izrada modernih web sajtova koji donose klijente.",
+  description: companyDescription,
   priceRange: "$$",
+  telephone: companyPhone,
   address: {
     "@type": "PostalAddress",
-    addressCountry: "BA",
+    streetAddress: companyAddress.streetAddress,
+    addressCountry: companyAddress.addressCountry,
+    addressRegion: companyAddress.addressRegion,
   },
-  geo: {
-    "@type": "GeoCoordinates",
-    // Dodaj koordinate kada budeš imao tačnu lokaciju
+  areaServed: {
+    "@type": "Country",
+    name: "Bosnia and Herzegovina",
   },
   openingHoursSpecification: [
     {
@@ -141,12 +159,14 @@ const localBusinessJsonLd = {
       closes: "17:00",
     },
   ],
-  serviceType: [
-    "Web Design",
-    "Web Development",
-    "E-commerce Development",
-    "SEO Optimization",
-  ],
+  serviceType: companyServiceTypes,
+  sameAs: socialProfiles,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: companyPhone,
+    email: companyEmail,
+  },
 };
 
 export default function RootLayout({
@@ -157,16 +177,25 @@ export default function RootLayout({
   return (
     <html lang="sr" className="scroll-smooth">
       <head>
+        <BreadcrumbsSchema />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessJsonLd),
+          }}
         />
       </head>
-      <body className={`${syne.variable} ${outfit.variable} font-body antialiased bg-surface-primary text-dark-50`}>
+      <body
+        className={`${syne.variable} ${outfit.variable} font-body antialiased bg-surface-primary text-dark-50`}
+      >
         <Header />
         <main>{children}</main>
         <Footer />

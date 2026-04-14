@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next'
 import { projects } from '@/data/projects'
+import { baseUrl } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://novawebstudio.co'
-  
   // Glavne stranice
   const staticPages: MetadataRoute.Sitemap = [
     {

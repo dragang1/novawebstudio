@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { projects } from "@/data/projects";
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://novawebstudio.co';
+import { baseUrl } from "@/lib/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -42,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       images: [
         {
-          url: project.coverImage,
+          url: project.coverImage.startsWith("http") ? project.coverImage : `${baseUrl}${project.coverImage}`,
           width: 1200,
           height: 630,
           alt: project.title,
@@ -53,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${project.title} | Nova Web Studio`,
       description: project.summary,
-      images: [project.coverImage],
+      images: [project.coverImage.startsWith("http") ? project.coverImage : `${baseUrl}${project.coverImage}`],
     },
     alternates: {
       canonical: `${baseUrl}/portfolio/${project.slug}`,

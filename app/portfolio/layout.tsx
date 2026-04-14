@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://novawebstudio.ba';
+import { baseUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Portfolio",
