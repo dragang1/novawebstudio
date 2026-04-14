@@ -91,11 +91,11 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-surface-secondary/95 backdrop-blur-xl border-t border-white/5"
+            className="md:hidden absolute inset-x-0 top-full bg-gradient-to-b from-accent-600 via-fuchsia-600 to-slate-950 border-t border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] z-40"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link, index) => (
@@ -109,7 +109,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <div className="text-dark-300 hover:text-dark-50 transition-colors py-2 text-lg font-medium">
+                    <div className="text-surface-primary hover:text-white transition-colors py-2 text-lg font-medium">
                       {link.label}
                     </div>
                   </Link>
@@ -121,7 +121,7 @@ export default function Header() {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Link href="/kontakt" onClick={() => setIsMobileMenuOpen(false)}>
-                  <div className="flex items-center justify-center gap-2 bg-gradient-to-r from-accent-500 to-pink-500 text-surface-primary px-6 py-4 rounded-full font-semibold text-center transition-all">
+                  <div className="flex items-center justify-center gap-2 bg-white/10 text-surface-primary px-6 py-4 rounded-full font-semibold text-center transition-all hover:bg-white/20">
                     Kontaktiraj nas
                     <ArrowRight className="w-5 h-5" />
                   </div>
