@@ -10,8 +10,8 @@ export default function KontaktPage() {
     { 
       icon: Mail, 
       label: "Email", 
-      value: "info@novawebstudio.co", 
-      href: "mailto:info@novawebstudio.co",
+      value: "novawebbih@gmail.com", 
+      href: "mailto:novawebbih@gmail.com",
       color: "text-accent-500",
       bgColor: "bg-accent-500/10",
     },

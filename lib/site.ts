@@ -1,7 +1,7 @@
 export const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://novawebstudio.co";
 export const companyName = "Nova Web Studio";
-export const companyEmail = "info@novawebstudio.co";
+export const companyEmail = "novawebbih@gmail.com";
 export const companyPhone = "+38766745772";
 export const companyDescription =
   "Izrada modernih web sajtova  koji donose klijente. Specijalizovani za lokalne biznise, e-commerce i SEO.";

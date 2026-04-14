@@ -22,7 +22,7 @@ export default function Footer() {
   ];
 
   const contactInfo = [
-    { icon: Mail, text: "info@novawebstudio.co", color: "text-accent-500",href: "mailto:info@novawebstudio.co",},
+    { icon: Mail, text: "novawebbih@gmail.com", color: "text-accent-500",href: "mailto:novawebbih@gmail.com",},
     { icon: Phone, text: "+387 66 745 772", color: "text-emerald-500",href: "tel:+38766745772", },
     { icon: Instagram, text: "@novawebstudio.co",
     color: "text-blue-500",
