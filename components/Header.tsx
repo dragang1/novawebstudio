@@ -42,7 +42,9 @@ export default function Header() {
             className="text-2xl font-heading font-bold cursor-pointer tracking-tight"
           >
             <span className="text-dark-50">Nova</span>
-            <span className="bg-gradient-to-r from-accent-500 to-pink-500 bg-clip-text text-transparent">.</span>
+            <span className="bg-gradient-to-r from-accent-500 to-pink-500 bg-clip-text text-transparent">
+              .
+            </span>
           </motion.div>
         </Link>
 
@@ -95,7 +97,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute inset-x-0 top-full bg-gradient-to-b from-accent-600 via-fuchsia-600 to-slate-950 border-t border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.5)] z-40"
+            className="md:hidden bg-white/5 backdrop-blur-3xl border-t border-white/10 shadow-[0_-10px_30px_rgba(0,0,0,0.3)]"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link, index) => (
@@ -109,7 +111,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <div className="text-surface-primary hover:text-white transition-colors py-2 text-lg font-medium">
+                    <div className="text-white/80 active:text-white active:bg-white/10 transition-all py-3 px-3 rounded-xl text-lg font-medium">
                       {link.label}
                     </div>
                   </Link>
@@ -120,7 +122,10 @@ export default function Header() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Link href="/kontakt" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link
+                  href="/kontakt"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   <div className="flex items-center justify-center gap-2 bg-white/10 text-surface-primary px-6 py-4 rounded-full font-semibold text-center transition-all hover:bg-white/20">
                     Kontaktiraj nas
                     <ArrowRight className="w-5 h-5" />
