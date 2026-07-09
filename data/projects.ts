@@ -13,6 +13,23 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "primjer-projekta-4",
+    title: "Wedding & Event Resort web sajt",
+    client: "Eco Arcadia",
+    year: 2026,
+    category: "website",
+    services: ["Web dizajn", "Galerija", "Kontakt forma", "SEO"],
+    summary:
+      "Elegantan web sajt za wedding & event resort u Gradišci — prirodna atmosfera, galerija lokacije i jednostavno zakazivanje ponude.",
+    results: [
+      "Profesionalan online nastup",
+      "Jasna prezentacija lokacije i kapaciteta",
+      "Više upita za vjenčanja i događaje",
+    ],
+    url: "https://ecoarcadiaresort.com",
+    coverImage: "/portfolio/primjer-3/eco-arcadia-cover.jpg",
+  },
+  {
     slug: "primjer-projekta-1",
     title: "E-commerce sajt za online prodaju",
     client: "Primjer Klijenta",
@@ -45,24 +62,6 @@ export const projects: Project[] = [
     ],
     url: "https://majabeautyroom.com",
     coverImage: "/portfolio/primjer-2/logo.png",
-  },
-
-  {
-    slug: "primjer-projekta-4",
-    title: "Redizajn postojećeg sajta",
-    client: "Primjer Klijenta 3",
-    year: 2024,
-    category: "redesign",
-    services: ["Redizajn", "Optimizacija brzine", "Mobilna verzija"],
-    summary:
-      "Moderan redizajn sa poboljšanom brzinom učitavanja i boljim korisničkim iskustvom na svim uređajima.",
-    results: [
-      "50% brže učitavanje",
-      "Bolje korisničko iskustvo",
-      "Više konverzija",
-    ],
-    url: "https://kalemprom.vercel.app/",
-    coverImage: "/portfolio/primjer-3/logo-kalemprom.png",
   },
   {
     slug: "primjer-projekta-2",
