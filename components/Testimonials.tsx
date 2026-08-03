@@ -81,7 +81,7 @@ export default function Testimonials() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 + index * 0.1 }}
               >
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </motion.blockquote>
 
               {/* Author with slide in */}

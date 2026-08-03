@@ -3,7 +3,7 @@
 import ContactForm from "@/components/ContactForm";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Mail, Phone, Clock, MessageCircle } from "lucide-react";
 
 export default function KontaktPage() {
   const contactInfo = [

@@ -14,7 +14,6 @@ import {
   companyServiceTypes,
   socialProfiles,
 } from "@/lib/site";
-import { generateBreadcrumbSchema, homeBreadcrumbs } from "@/lib/schema";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -105,9 +104,6 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD za breadcrumbs
-const breadcrumbSchema = generateBreadcrumbSchema(homeBreadcrumbs);
-
 // JSON-LD strukturirani podaci za organizaciju
 const jsonLd = {
   "@context": "https://schema.org",
@@ -178,10 +174,6 @@ export default function RootLayout({
     <html lang="sr" className="scroll-smooth">
       <head>
         <BreadcrumbsSchema />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

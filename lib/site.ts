@@ -4,7 +4,7 @@ export const companyName = "Nova Web Studio";
 export const companyEmail = "novawebbih@gmail.com";
 export const companyPhone = "+38766745772";
 export const companyDescription =
-  "Izrada modernih web sajtova  koji donose klijente. Specijalizovani za lokalne biznise, e-commerce i SEO.";
+  "Izrada web sajtova i web shopova u Banjaluci i BiH. Moderni dizajn, SEO i brza isporuka za lokalne biznise — zatražite besplatnu ponudu danas.";
 export const companyAddress = {
   addressCountry: "BA",
   addressRegion: "Bosna i Hercegovina",

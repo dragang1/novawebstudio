@@ -13,8 +13,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "primjer-projekta-4",
-    title: "Wedding & Event Resort web sajt",
+    slug: "eco-arcadia",
+    title: "Eco Arcadia Wedding & Event Resort",
     client: "Eco Arcadia",
     year: 2026,
     category: "website",
@@ -30,14 +30,31 @@ export const projects: Project[] = [
     coverImage: "/portfolio/primjer-3/eco-arcadia-cover.jpg",
   },
   {
-    slug: "primjer-projekta-1",
-    title: "E-commerce sajt za online prodaju",
-    client: "Primjer Klijenta",
-    year: 2025,
+    slug: "pod-fenjerom",
+    title: "Pod fenjerom — restoran Nova Topola",
+    client: "Pod fenjerom",
+    year: 2026,
     category: "website",
+    services: ["Web dizajn", "Jelovnik", "Galerija", "SEO"],
+    summary:
+      "Web sajt za restoran Pod fenjerom u Novoj Topoli — tradicija od 1974, digitalni jelovnik, galerija i jasna prezentacija lokacije.",
+    results: [
+      "Profesionalan online nastup",
+      "Pregledan digitalni jelovnik",
+      "Jača lokalna vidljivost",
+    ],
+    url: "https://www.podfenjerom.com/",
+    coverImage: "/portfolio/pod-fenjerom/cover.jpg",
+  },
+  {
+    slug: "ledtehnika",
+    title: "LED Tehnika — web shop rasvjete",
+    client: "LED Tehnika",
+    year: 2025,
+    category: "ecommerce",
     services: ["Web shop", "Naplata", "Integracije"],
     summary:
-      "Potpuno funkcionalan web shop sa katalogom proizvoda, korpom za kupovinu i sistemom za preuzimanje narudžbi.",
+      "E-commerce sajt za LED Tehniku sa katalogom rasvjete, korpom za kupovinu i sistemom za preuzimanje narudžbi.",
     results: [
       "Povećana online prodaja",
       "Lako upravljanje proizvodima",
@@ -47,14 +64,14 @@ export const projects: Project[] = [
     coverImage: "/portfolio/primjer-1/logowhite.png",
   },
   {
-    slug: "primjer-projekta-3",
-    title: "Beauty salon web sajt",
-    client: "Primjer Klijenta 2",
+    slug: "maja-beauty-room",
+    title: "Maja Beauty Room — beauty salon",
+    client: "Maja Beauty Room",
     year: 2026,
     category: "website",
-    services: ["Web dizajn", "Kontakt forma", "Vidljivost na pretraživačima"],
+    services: ["Web dizajn", "Kontakt forma", "SEO"],
     summary:
-      "Potpuno funkcionalan web sajt za beauty salon sa kontakt formom i optimizacijom za pretraživače.",
+      "Web sajt za beauty salon Maja Beauty Room sa kontakt formom, prezentacijom usluga i optimizacijom za lokalnu pretragu.",
     results: [
       "Povećana vidljivost na internetu",
       "Više zakazanih termina",
@@ -64,14 +81,14 @@ export const projects: Project[] = [
     coverImage: "/portfolio/primjer-2/logo.png",
   },
   {
-    slug: "primjer-projekta-2",
-    title: "E-commerce sajt za online prodaju",
-    client: "Primjer Klijenta",
+    slug: "electon",
+    title: "Electon — e-commerce platforma",
+    client: "Electon",
     year: 2024,
-    category: "website",
+    category: "ecommerce",
     services: ["Web shop", "Naplata", "Integracije"],
     summary:
-      "Potpuno funkcionalan web shop sa katalogom proizvoda, korpom za kupovinu i sistemom za preuzimanje narudžbi.",
+      "Moderna e-commerce platforma Electon sa katalogom proizvoda, korpom i integracijama za online narudžbe.",
     results: [
       "Povećana online prodaja",
       "Lako upravljanje proizvodima",

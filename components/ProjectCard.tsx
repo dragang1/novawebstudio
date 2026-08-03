@@ -44,14 +44,14 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               src={project.coverImage}
               alt={project.title}
               fill
-              className={`object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'} ${project.slug === 'primjer-projekta-2' || project.slug === 'primjer-projekta-3' ? 'brightness-75' : ''}`}
+              className={`object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'} ${project.slug === 'electon' || project.slug === 'maja-beauty-room' ? 'brightness-75' : ''}`}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onError={() => setImageError(true)}
             />
-            {project.slug === 'primjer-projekta-2' && (
+            {project.slug === 'electon' && (
               <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-indigo-900/30 to-transparent" />
             )}
-            {project.slug === 'primjer-projekta-3' && (
+            {project.slug === 'maja-beauty-room' && (
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-blue-900/30 to-transparent" />
             )}
           </div>
@@ -68,7 +68,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         
         {/* Category badge */}
         <div className="absolute top-4 left-4">
-          <span className={`px-3 py-1.5 rounded-full ${project.slug === 'primjer-projekta-2' ? 'bg-purple-500/10' : config.bgColor} backdrop-blur-sm border border-white/10 ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.textColor} text-xs font-medium`}>
+          <span className={`px-3 py-1.5 rounded-full ${project.slug === 'electon' ? 'bg-purple-500/10' : config.bgColor} backdrop-blur-sm border border-white/10 ${project.slug === 'electon' ? 'text-purple-500' : config.textColor} text-xs font-medium`}>
             {config.label}
           </span>
         </div>
@@ -76,7 +76,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         {/* Hover overlay - Desktop only (visual feedback) */}
         {isDesktop && project.url && (
           <div
-            className={`absolute inset-0 bg-gradient-to-t ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient}
+            className={`absolute inset-0 bg-gradient-to-t ${project.slug === 'electon' ? 'from-purple-500 to-indigo-500' : config.gradient}
               opacity-0 group-hover:opacity-50 flex items-center justify-center transition-opacity duration-200`}
           >
             <div className="flex items-center gap-2 bg-white text-surface-primary px-6 py-3 rounded-full font-semibold text-sm shadow-lg">
@@ -177,7 +177,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
                     whileHover={{ scale: 1.2 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    <Check className={`w-3.5 h-3.5 ${project.slug === 'primjer-projekta-2' ? 'text-purple-500' : config.textColor} mt-0.5 flex-shrink-0`} />
+                    <Check className={`w-3.5 h-3.5 ${project.slug === 'electon' ? 'text-purple-500' : config.textColor} mt-0.5 flex-shrink-0`} />
                   </motion.div>
                   <span>{result}</span>
                 </motion.li>
@@ -194,7 +194,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-2 border px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
-                project.slug === 'primjer-projekta-2' 
+                project.slug === 'electon' 
                   ? 'bg-purple-500/10 text-purple-500 border-purple-500/20' 
                   : `${config.bgColor} ${config.textColor} border-white/10`
               }`}
@@ -207,7 +207,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       </div>
 
       {/* Bottom gradient accent */}
-      <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.slug === 'primjer-projekta-2' ? 'from-purple-500 to-indigo-500' : config.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+      <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.slug === 'electon' ? 'from-purple-500 to-indigo-500' : config.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
     </div>
   );
 

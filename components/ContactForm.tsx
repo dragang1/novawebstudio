@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Phone } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -193,6 +193,14 @@ const handleSubmit = async (e: React.FormEvent) => {
       <p className="text-sm text-dark-500 text-center">
         Odgovaramo u roku od 24 sata
       </p>
+
+      <a
+        href="tel:+38766745772"
+        className="flex items-center justify-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+      >
+        <Phone className="w-4 h-4" />
+        Pozovite nas: +387 66 745 772
+      </a>
     </form>
   );
 }
